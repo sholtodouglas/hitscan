@@ -4,6 +4,7 @@ One-time setup on the flashing machine (Mac / Linux / Windows):
 
 ```bash
 pip3 install platformio        # or: brew install platformio
+# If 'pio' isn't found after install, that's fine — flash.sh falls back to 'python3 -m platformio'
 ```
 
 Then from this directory:
