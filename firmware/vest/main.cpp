@@ -50,18 +50,8 @@ constexpr int   RESET_PIN     = 19;
 #if SENSOR_MODE == MODE_NFC
 #include <SPI.h>
 #include <MFRC522.h>
-constexpr int NFC_SCK = 14, NFC_MISO = 27, NFC_MOSI = 13, NFC_SS = 4, NFC_RST = 22, NFC_IRQ = 21;
+constexpr int NFC_SCK = 14, NFC_MISO = 27, NFC_MOSI = 13, NFC_SS = 4, NFC_RST = 22;
 MFRC522 nfc(NFC_SS, NFC_RST);
-volatile bool nfcIrq = false;
-void IRAM_ATTR nfcISR() { nfcIrq = true; }
-
-void nfcActivateRx() {
-  nfc.PCD_WriteRegister(MFRC522::ComIrqReg, 0x7F);                 // clear IRQ bits
-  nfc.PCD_WriteRegister(MFRC522::FIFOLevelReg, 0x80);              // flush FIFO
-  nfc.PCD_WriteRegister(MFRC522::FIFODataReg, MFRC522::PICC_CMD_REQA);
-  nfc.PCD_WriteRegister(MFRC522::CommandReg, MFRC522::PCD_Transceive);
-  nfc.PCD_WriteRegister(MFRC522::BitFramingReg, 0x87);             // StartSend, 7-bit
-}
 #endif
 
 // ---------- state ----------
@@ -125,17 +115,13 @@ int rawSensor() {
 #if SENSOR_MODE == MODE_BUTTON
   return digitalRead(SENSOR_PIN) == LOW ? 4095 : 0;
 #elif SENSOR_MODE == MODE_NFC
-  if (!nfcIrq) return 0;
-  nfcIrq = false;
-  bool ok = nfc.PICC_ReadCardSerial();
-  if (ok) {
-    Serial.print("tag UID:");
-    for (byte i = 0; i < nfc.uid.size; i++) Serial.printf(" %02X", nfc.uid.uidByte[i]);
-    Serial.println();
-    nfc.PICC_HaltA();
-  }
-  nfcActivateRx();
-  return ok ? 4095 : 0;
+  if (!nfc.PICC_IsNewCardPresent()) return 0;
+  if (!nfc.PICC_ReadCardSerial())   return 0;
+  Serial.print("tag UID:");
+  for (byte i = 0; i < nfc.uid.size; i++) Serial.printf(" %02X", nfc.uid.uidByte[i]);
+  Serial.println();
+  nfc.PICC_HaltA();
+  return 4095;
 #else
   return analogRead(SENSOR_PIN);
 #endif
@@ -169,10 +155,10 @@ void setup() {
 #elif SENSOR_MODE == MODE_NFC
   SPI.begin(NFC_SCK, NFC_MISO, NFC_MOSI, NFC_SS);
   nfc.PCD_Init();
-  pinMode(NFC_IRQ, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(NFC_IRQ), nfcISR, FALLING);
-  nfc.PCD_WriteRegister(MFRC522::ComIEnReg, 0xA0);   // RxIRq enable, IRQ pin push-pull active-low
-  nfcActivateRx();
+  delay(50);
+  byte ver = nfc.PCD_ReadRegister(MFRC522::VersionReg);
+  Serial.printf("RC522 version: 0x%02X  %s\n", ver,
+    (ver == 0x91 || ver == 0x92) ? "(SPI OK)" : "(SPI FAIL — check MISO/MOSI/SCK/SDA wiring or solder)");
 #endif
   FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
   FastLED.setBrightness(180);
