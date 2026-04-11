@@ -23,7 +23,8 @@
 #define MODE_PIEZO     0   // impact spike (analog)
 #define MODE_PRESSURE  1   // FSR or Velostat divider (analog)
 #define MODE_BUTTON    2   // arcade microswitch OR LM567 tone-decoder output (digital, active-low)
-#define MODE_NFC       3   // RC522 reader, passive tag in weapon tip (SPI)
+#define MODE_NFC       3   // RC522 reader(s), passive tag in weapon tip (SPI)
+#define MODE_NFC_PN532 4   // PN532 reader(s) w/ external flex antennas (SPI)
 
 #ifndef SENSOR_MODE
 #define SENSOR_MODE  MODE_PIEZO
@@ -47,16 +48,23 @@ constexpr int   LED_PIN       = 5;
 constexpr int   BUZZER_PIN    = 18;
 constexpr int   RESET_PIN     = 19;
 
-#if SENSOR_MODE == MODE_NFC
+#if SENSOR_MODE == MODE_NFC || SENSOR_MODE == MODE_NFC_PN532
 #include <SPI.h>
-#include <MFRC522.h>
-constexpr int NFC_SCK = 14, NFC_MISO = 27, NFC_MOSI = 13, NFC_RST = 22;
-// One SDA (chip-select) pin per reader. Add pins to tile more readers
-// across the chest/back — they all share SCK/MISO/MOSI/RST.
-constexpr int NFC_SS[]    = { 4, 16, 17 };
+constexpr int NFC_SCK = 14, NFC_MISO = 27, NFC_MOSI = 13;
+// One chip-select pin per reader. Tile more by adding pins — all readers
+// share SCK/MISO/MOSI.
+constexpr int NFC_SS[]    = { 4, 16, 17, 25, 26 };
 constexpr int NUM_READERS = sizeof(NFC_SS) / sizeof(NFC_SS[0]);
-MFRC522 nfc[NUM_READERS];
 int lastReader = -1;
+#endif
+
+#if SENSOR_MODE == MODE_NFC
+#include <MFRC522.h>
+constexpr int NFC_RST = 22;
+MFRC522 nfc[NUM_READERS];
+#elif SENSOR_MODE == MODE_NFC_PN532
+#include <Adafruit_PN532.h>
+Adafruit_PN532* nfc[NUM_READERS];
 #endif
 
 // ---------- state ----------
@@ -131,6 +139,17 @@ int rawSensor() {
     return 4095;
   }
   return 0;
+#elif SENSOR_MODE == MODE_NFC_PN532
+  uint8_t uid[7], uidLen;
+  for (int r = 0; r < NUM_READERS; r++) {
+    if (!nfc[r]->readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLen, 30)) continue;
+    lastReader = r;
+    Serial.printf("reader %d  tag UID:", r);
+    for (byte i = 0; i < uidLen; i++) Serial.printf(" %02X", uid[i]);
+    Serial.println();
+    return 4095;
+  }
+  return 0;
 #else
   return analogRead(SENSOR_PIN);
 #endif
@@ -167,8 +186,18 @@ void setup() {
     nfc[r].PCD_Init(NFC_SS[r], NFC_RST);
     delay(50);
     byte ver = nfc[r].PCD_ReadRegister(MFRC522::VersionReg);
-    Serial.printf("reader %d (SDA=%d): version 0x%02X  %s\n", r, NFC_SS[r], ver,
+    Serial.printf("reader %d (SS=%d): version 0x%02X  %s\n", r, NFC_SS[r], ver,
       (ver == 0x91 || ver == 0x92) ? "OK" : "FAIL/absent");
+  }
+#elif SENSOR_MODE == MODE_NFC_PN532
+  SPI.begin(NFC_SCK, NFC_MISO, NFC_MOSI);
+  for (int r = 0; r < NUM_READERS; r++) {
+    nfc[r] = new Adafruit_PN532(NFC_SS[r], &SPI);
+    nfc[r]->begin();
+    uint32_t ver = nfc[r]->getFirmwareVersion();
+    Serial.printf("reader %d (SS=%d): %s\n", r, NFC_SS[r],
+      ver ? "PN532 OK" : "FAIL/absent");
+    if (ver) nfc[r]->SAMConfig();
   }
 #endif
   FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
