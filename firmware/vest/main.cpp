@@ -25,11 +25,15 @@
 #define MODE_BUTTON    2   // arcade microswitch OR LM567 tone-decoder output (digital, active-low)
 #define MODE_NFC       3   // RC522 reader, passive tag in weapon tip (SPI)
 
+#ifndef SENSOR_MODE
 #define SENSOR_MODE  MODE_PIEZO
+#endif
 
 // Set to 1, flash, open Serial Monitor @115200, hit the pad to see raw
 // readings. Use this to pick HIT_THRESHOLD for analog modes.
+#ifndef CALIBRATION
 #define CALIBRATION 0
+#endif
 
 // ---------- tuning ----------
 constexpr int   MAX_HP        = 5;
