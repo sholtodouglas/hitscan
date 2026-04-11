@@ -1,80 +1,106 @@
-# NFC chest/back plate — spec
+# NFC chest/back plate — production spec
 
-## The constraint
+**Design intent:** flush, deliberate hits register; glancing swipes don't.
+Weapon/glove/arrow carries a passive NFC tag; vest carries reader zones.
+Zone + attacker UID reported on every hit.
 
-Largest off-the-shelf flex NFC coil ≈ **50×35mm** (Taoglas FXR.01.A,
-Abracon ANFCA-5035). Reader↔antenna are a **tuned pair** — swapping in a
-non-stock coil can cut range to 1/5 without re-matching caps. So: tile
-small matched units, don't chase one big coil.
+## Reader: Elechouse PN5321 MINI
 
-## Recommended build: tiled RC522 Mini
+| Spec | Value |
+|---|---|
+| Board | 25 × 16 × 4.4 mm |
+| Antenna | **40 × 50 mm**, ferrite-backed (interference-resistant — doesn't care what's behind it) |
+| Antenna cable | 10 cm, IPEX4/MHF4 or MX1.25 |
+| Interfaces | SPI / I2C / UART (solder-pad select — **set to SPI**) |
+| Price | $34.50 ea, $29.90 @ 10+ |
+| Link | [elechouse.com/product/pn532-mini](https://www.elechouse.com/product/pn532-mini/) |
 
-The RC522 Mini board **is** ~38×25×5mm — same footprint as the flex
-antennas, with the reader chip already on it. Putting the whole module on
-the chest (potted) is simpler and ~4× cheaper than remote-antenna PN532
-for the same coverage.
+The 10 cm coax + IPEX4 connector are the fragile parts → keep them
+**inside** the potted puck; run robust ribbon for the long haul.
 
-| Qty | Part | Link | ~Cost |
-|---|---|---|---|
-| 6 | **RC522 Mini** RFID module | [amazon](https://www.amazon.com/s?k=RC522+mini+RFID+module+small) | $4 ea |
-| 1 | 8-conductor ribbon cable, 26AWG | [amazon](https://www.amazon.com/s?k=8+conductor+ribbon+cable+26+awg) | $8 |
-| 6 | JST-XH 8-pin pairs (module ↔ ribbon) | (in your JST kit) | — |
-| 1 | Conformal coating spray (waterproof) | [amazon](https://www.amazon.com/s?k=MG+Chemicals+422C+conformal+coating) | $15 |
-| 1 | 6mil poly bags / heat-shrink wrap | [amazon](https://www.amazon.com/s?k=3x4+6mil+poly+bag) | $8 |
-| — | thin ABS or PETG strike plate (you have) | — | — |
+## Architecture
 
-**≈ $55 covers 5-zone plates for one vest + a spare.**
-
-## Wiring
-
-All readers share **3.3V / GND / SCK(14) / MISO(27) / MOSI(13) / RST(22)**
-on a 6-wire bus (the ribbon). Each reader's **SDA** gets its own ESP32 pin:
-
-```c
-constexpr int NFC_SS[] = { 4, 16, 17, 25, 26 };   // chest L/C/R, back U/L
+```
+                  hip box (dry)
+   ┌──────────────────────────────────────┐
+   │  ESP32  ──SPI bus──┬──SS0──► puck 0  │
+   │  power bank        ├──SS1──► puck 1  │  each puck = its own
+   │  buzzer / LED      ├──SS2──► puck 2  │  6-core ribbon, star
+   │                    ├──SS3──► puck 3  │  topology — no mid-run
+   │                    └──SS4──► puck 4  │  connectors
+   └────────┬─────────────────────────────┘
+            │ 5× cable glands
+            ▼
+   5× potted pucks on vest panels
 ```
 
-Edit the array in `firmware/vest/main.cpp`, `./flash.sh vest-nfc`. Hit
-prints `reader N tag UID: …` — zone + attacker for free.
+**Puck** = PN5321 board + 40×50 antenna + 10 cm coax, all cast in clear
+epoxy as one ~45×55×12 mm tile. Ribbon enters the epoxy and cures in
+place — no exposed RF connector, no exposed solder.
+
+## Wiring — per puck (6 conductors)
+
+| Ribbon core | PN5321 pin | ESP32 | shared? |
+|---|---|---|---|
+| 1 | VCC | 3V3 | bus |
+| 2 | GND | GND | bus |
+| 3 | SCK | P14 | bus |
+| 4 | MISO | P27 | bus |
+| 5 | MOSI | P13 | bus |
+| 6 | **SS** | P4 / P16 / P17 / P25 / P26 | **per-puck** |
+
+PN532 in SPI mode doesn't need RST or IRQ pins. Set the board's
+interface-select solder pads to **SPI** before potting.
+
+Firmware: `./flash.sh vest-nfc-pn532`. Edit `NFC_SS[]` in
+`firmware/vest/main.cpp` to match the SS pins you wired.
 
 ## Waterproofing
 
-1. Conformal-coat each RC522 Mini (spray both sides, dry 24h)
-2. Slip into a thin poly bag, heat-seal or tape shut
-3. Mount behind 1mm PETG strike plate (NFC reads through ~5mm plastic fine)
-4. Ribbon exits via a glued grommet; JST at the hip-box end
+- **Puck:** cast in 2-part clear epoxy in a ~50×60 mm silicone mold.
+  Antenna face flush to the mold floor (thinnest epoxy over the coil =
+  best range). Board + coax + first 20 mm of ribbon all submerged.
+- **Ribbon run:** PVC jacket is already waterproof. Sleeve in braided
+  loom for abrasion if desired.
+- **Hip box:** IP65 junction box with cable glands (one per ribbon).
+- **Field-swappable variant:** instead of potting the ribbon in, fit an
+  **M8 6-pin IP67 circular connector** at the puck edge. ~$6/pair.
 
-## Layout (top-down, 5 zones)
+## Layout — 5 zones
 
 ```
    chest                    back
 ┌─────────────┐        ┌─────────────┐
 │ [0] [1] [2] │        │     [3]     │
-│  L   C   R  │        │   upper     │
+│  L  ♥   R  │        │  shoulder   │
 │             │        │     [4]     │
-└─────────────┘        │   lower     │
+└─────────────┘        │   kidney    │
                        └─────────────┘
 ```
 
-Each zone ≈ 4×2.5cm read area. Gaps between zones are intentional — a
-flush, deliberate hit lands; a glancing swipe misses. That's the design.
+Each zone ≈ 40×50 mm read area. Gaps between are intentional.
 
-## Alt: PN532 + flex coil (if you want board-in-box)
+## Shopping list (per vest, 5 zones + 1 spare)
 
-Only if RC522-on-chest proves too fragile. Reader sits in hip box; only a
-paper-thin coil + coax goes to the vest.
+| Qty | Part | Link | Cost |
+|---|---|---|---|
+| 6 | PN5321 MINI w/ 40×50 antenna | [elechouse](https://www.elechouse.com/product/pn532-mini/) | $207 (or $179 @ 10+) |
+| 3 m | 6-conductor ribbon, 26–28AWG | [amazon](https://www.amazon.com/s?k=6+conductor+flat+ribbon+cable+28awg) | $8 |
+| 1 | 2-part clear potting epoxy, 200 ml | [amazon](https://www.amazon.com/s?k=clear+electronics+potting+epoxy) | $15 |
+| 1 | rectangular silicone molds ~50×60 mm | [amazon](https://www.amazon.com/s?k=rectangular+silicone+mold+50mm) | $8 |
+| 1 | IP65 junction box ~130×80×50, cable glands | [amazon](https://www.amazon.com/s?k=IP65+junction+box+130x80+cable+gland) | $10 |
+| 1 | adhesive-lined 3:1 heat-shrink assortment | [amazon](https://www.amazon.com/s?k=adhesive+lined+heat+shrink+3%3A1) | $8 |
+| 1 | braided cable sleeve 6 mm | [amazon](https://www.amazon.com/s?k=braided+cable+sleeve+6mm) | $7 |
+| *(opt)* 5 | M8 6-pin IP67 connector pairs | [amazon](https://www.amazon.com/s?k=M8+6+pin+connector+IP67) | $30 |
 
-| Part | Link | Note |
-|---|---|---|
-| Elechouse **PN5321 MINI** w/ ext antenna | [elechouse](https://www.elechouse.com/) | bundled matched coil; ~$18 ea |
-| Taoglas FXR.01.A (53×37mm, u.FL) | [digikey](https://www.digikey.com/en/products/result?keywords=FXR.01.A) | 50Ω-matched, *should* pair |
+**≈ $260/vest** non-swappable, **≈ $290** swappable. Tags (NTAG213
+stickers) you already have — 50 covers all weapons + gloves + arrows.
 
-Needs `Adafruit_PN532` lib — separate firmware mode, not yet written.
+## Game hooks
 
-## Game hooks (zone-aware)
-
-- **Back-stab** (readers 3/4): instant kill or 2× damage
-- **Heart** (reader 1): instant kill
-- **Weapon-specific**: tag UID → lookup table → dagger only scores on back,
-  arrow only on chest, etc.
-- Zone lights up on the LED bar in a different color per location
+- **Back zones (3/4):** 2× damage or instant kill — rewards flanking
+- **Heart (1):** instant kill on a dagger-tagged weapon only
+- **Per-weapon rules:** UID → lookup table → arrows only score on chest,
+  mace ignores zone, etc.
+- **Tagged gloves:** punches score + ID the puncher
+- Zone-colored hit flash on the LED bar
