@@ -50,8 +50,13 @@ constexpr int   RESET_PIN     = 19;
 #if SENSOR_MODE == MODE_NFC
 #include <SPI.h>
 #include <MFRC522.h>
-constexpr int NFC_SCK = 14, NFC_MISO = 27, NFC_MOSI = 13, NFC_SS = 4, NFC_RST = 22;
-MFRC522 nfc(NFC_SS, NFC_RST);
+constexpr int NFC_SCK = 14, NFC_MISO = 27, NFC_MOSI = 13, NFC_RST = 22;
+// One SDA (chip-select) pin per reader. Add pins to tile more readers
+// across the chest/back — they all share SCK/MISO/MOSI/RST.
+constexpr int NFC_SS[]    = { 4, 16, 17 };
+constexpr int NUM_READERS = sizeof(NFC_SS) / sizeof(NFC_SS[0]);
+MFRC522 nfc[NUM_READERS];
+int lastReader = -1;
 #endif
 
 // ---------- state ----------
@@ -115,13 +120,17 @@ int rawSensor() {
 #if SENSOR_MODE == MODE_BUTTON
   return digitalRead(SENSOR_PIN) == LOW ? 4095 : 0;
 #elif SENSOR_MODE == MODE_NFC
-  if (!nfc.PICC_IsNewCardPresent()) return 0;
-  if (!nfc.PICC_ReadCardSerial())   return 0;
-  Serial.print("tag UID:");
-  for (byte i = 0; i < nfc.uid.size; i++) Serial.printf(" %02X", nfc.uid.uidByte[i]);
-  Serial.println();
-  nfc.PICC_HaltA();
-  return 4095;
+  for (int r = 0; r < NUM_READERS; r++) {
+    if (!nfc[r].PICC_IsNewCardPresent()) continue;
+    if (!nfc[r].PICC_ReadCardSerial())   continue;
+    lastReader = r;
+    Serial.printf("reader %d  tag UID:", r);
+    for (byte i = 0; i < nfc[r].uid.size; i++) Serial.printf(" %02X", nfc[r].uid.uidByte[i]);
+    Serial.println();
+    nfc[r].PICC_HaltA();
+    return 4095;
+  }
+  return 0;
 #else
   return analogRead(SENSOR_PIN);
 #endif
@@ -153,12 +162,14 @@ void setup() {
 #if SENSOR_MODE == MODE_BUTTON
   pinMode(SENSOR_PIN, INPUT_PULLUP);
 #elif SENSOR_MODE == MODE_NFC
-  SPI.begin(NFC_SCK, NFC_MISO, NFC_MOSI, NFC_SS);
-  nfc.PCD_Init();
-  delay(50);
-  byte ver = nfc.PCD_ReadRegister(MFRC522::VersionReg);
-  Serial.printf("RC522 version: 0x%02X  %s\n", ver,
-    (ver == 0x91 || ver == 0x92) ? "(SPI OK)" : "(SPI FAIL — check MISO/MOSI/SCK/SDA wiring or solder)");
+  SPI.begin(NFC_SCK, NFC_MISO, NFC_MOSI);
+  for (int r = 0; r < NUM_READERS; r++) {
+    nfc[r].PCD_Init(NFC_SS[r], NFC_RST);
+    delay(50);
+    byte ver = nfc[r].PCD_ReadRegister(MFRC522::VersionReg);
+    Serial.printf("reader %d (SDA=%d): version 0x%02X  %s\n", r, NFC_SS[r], ver,
+      (ver == 0x91 || ver == 0x92) ? "OK" : "FAIL/absent");
+  }
 #endif
   FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
   FastLED.setBrightness(180);
