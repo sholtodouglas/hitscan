@@ -63,8 +63,11 @@ Firmware: `./flash.sh vest-nfc-pn532`. Edit `NFC_SS[]` in
 - **Ribbon run:** PVC jacket is already waterproof. Sleeve in braided
   loom for abrasion if desired.
 - **Hip box:** IP65 junction box with cable glands (one per ribbon).
-- **Field-swappable variant:** instead of potting the ribbon in, fit an
-  **M8 6-pin IP67 circular connector** at the puck edge. ~$6/pair.
+- **Swappable (default):** M8 6-pin IP67 panel jack potted into the
+  puck edge; pre-molded M8 cable on the harness. O-ring seal when mated;
+  dust cap when not.
+- *Non-swappable alt:* pot the ribbon directly into the epoxy instead.
+  Saves ~$50/vest, loses field repair.
 
 ## Layout — 5 zones
 
@@ -91,9 +94,11 @@ Each zone ≈ 40×50 mm read area. Gaps between are intentional.
 | 1 | IP65 junction box ~130×80×50, cable glands | [amazon](https://www.amazon.com/s?k=IP65+junction+box+130x80+cable+gland) | $10 |
 | 1 | adhesive-lined 3:1 heat-shrink assortment | [amazon](https://www.amazon.com/s?k=adhesive+lined+heat+shrink+3%3A1) | $8 |
 | 1 | braided cable sleeve 6 mm | [amazon](https://www.amazon.com/s?k=braided+cable+sleeve+6mm) | $7 |
-| *(opt)* 5 | M8 6-pin IP67 connector pairs | [amazon](https://www.amazon.com/s?k=M8+6+pin+connector+IP67) | $30 |
+| 5 | **M8 6-pin IP67** panel jack (puck side) | [amazon](https://www.amazon.com/s?k=M8+6+pin+female+panel+mount+IP67) | $20 |
+| 5 | **M8 6-pin pre-molded cable**, 0.5 m (harness side) | [amazon](https://www.amazon.com/s?k=M8+6+pin+male+cable+assembly+IP67) | $25 |
+| 5 | M8 dust caps | [amazon](https://www.amazon.com/s?k=M8+connector+dust+cap) | $5 |
 
-**≈ $260/vest** non-swappable, **≈ $290** swappable. Tags (NTAG213
+**≈ $300/vest** — swappable pucks (default). Dead puck mid-game = 10-sec screw-swap. Tags (NTAG213
 stickers) you already have — 50 covers all weapons + gloves + arrows.
 
 ## Game hooks
