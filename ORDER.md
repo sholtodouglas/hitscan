@@ -51,6 +51,22 @@ your earlier orders; check the pile before re-buying.
 
 **Buy-now total ≈ $279** (≈$214 without drill + sealer)
 
+## NFC add-on (optional — 2-3 pucks for field A/B vs Velostat)
+
+| # | Part | Link | Cost |
+|---|---|---|---|
+| 29 | PN5321 MINI w/ 40×50mm antenna ×3 | [elechouse](https://www.elechouse.com/product/pn532-mini/) | $104 |
+| 30 | M8 **6-pin** female panel socket ×5 (3 puck + 2 box) | [amazon](https://www.amazon.com/s?k=M8+6+pin+female+panel+mount+IP67) | $25 |
+| 31 | M8 6-pin male-to-male cable 1m ×2 | [amazon](https://www.amazon.com/s?k=M8+6+pin+male+to+male+cable+1m) | $18 |
+| 32 | Clear 2-part potting epoxy 200ml | [amazon](https://www.amazon.com/s?k=clear+electronics+potting+epoxy) | $15 |
+| 33 | Silicone molds ~50×60mm | [amazon](https://www.amazon.com/s?k=rectangular+silicone+mold+50mm) | $8 |
+
+**NFC add-on ≈ $170.** Same Pelican, +2 holes (6-pin). Firmware:
+`vest-nfc-pn532` ready; `MODE_HYBRID` (Velostat=HP, NFC=attacker-ID)
+is the next firmware task. Build per `NFC_PLATE.md`.
+
+**Everything tonight ≈ $449** (or ~$384 without drill+sealer).
+
 ## VERIFY YOU HAVE
 
 | Item | Used in | If missing |
