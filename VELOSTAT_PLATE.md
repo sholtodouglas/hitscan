@@ -54,10 +54,13 @@ cracks). Snaps stay **inside** the pocket; nothing pierces the PUL.
    wires + a 20 cm 2-core pigtail through; solder leads to pigtail
    inside the pocket; tighten the gland's compression nut on the
    pigtail. RTV bead around the plate-to-PUL edge.
-6. Lay the second PUL sheet over, **heat-weld all four edges** (impulse
-   sealer, or iron on low through parchment, PU sides together). Leave
-   the pocket *slightly* loose — pre-compression kills dynamic range.
-7. Crimp/solder an **M8 2-pin plug** onto the pigtail end.
+6. Cut four **15 cm loops of 25 mm webbing**, fold each in half. Lay the
+   second PUL sheet over. At each corner, trap a folded loop between the
+   two PUL layers so ~4 cm of loop sticks out past the edge.
+7. **Heat-weld all four edges** (impulse sealer, or iron on low through
+   parchment, PU sides together) — the weld fuses through/around the
+   webbing, sealing it in. Leave the pocket *slightly* loose.
+8. Crimp/solder an **M8 2-pin plug** onto the pigtail end.
 
 ### Why gland-plus-pigtail, not M8-in-pad
 
@@ -155,19 +158,26 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 
 ## Wear layer
 
-**Off-the-shelf:** JPC-style plate carrier — front + back 10×12" plate
-bags, shoulder straps, skeletal cummerbund, MOLLE. Pad slides into each
-bag; cable exits the bottom grommet → along cummerbund → Pelican
-carabinered to the MOLLE at the hip.
+**Straps clip directly to the pad** — no separate bag. The four webbing
+loops welded into the pad corners (step 6) take G-hooks or carabiners:
 
-| | Price | Link |
-|---|---|---|
-| IDOGEAR JPC 2.0 | ~$55 | [amazon](https://www.amazon.com/s?k=IDOGEAR+JPC+2.0+plate+carrier) |
-| KRYDEX JPC | ~$45 | [amazon](https://www.amazon.com/s?k=KRYDEX+JPC+plate+carrier) |
-| Yakeda (budget) | ~$30 | [amazon](https://www.amazon.com/s?k=Yakeda+JPC+plate+carrier) |
+- 2× shoulder straps: front-pad top loops → over shoulders → back-pad
+  top loops. Buckle + tri-glide on each.
+- 2× side straps: front-pad bottom loops → around ribs → back-pad
+  bottom loops. Buckle on each.
+- Pelican carabiners onto a side strap at the hip.
 
-**DIY H-harness** (lighter, less military): 2× plate-bag pouches + 25 mm
-webbing over shoulders and around ribs, side-release buckles. ~$35–50.
+| Qty | Part | Link | Cost |
+|---|---|---|---|
+| 8 | G-hook 1" | [amazon](https://www.amazon.com/s?k=1+inch+G+hook+webbing) | $8 |
+| 4 | side-release buckle 1" | [amazon](https://www.amazon.com/s?k=1+inch+side+release+buckle) | $6 |
+| 4 | tri-glide 1" | [amazon](https://www.amazon.com/s?k=1+inch+triglide+slider) | $4 |
+| ~3 m | 25 mm webbing | (running straps) | — |
+
+**~$18 + webbing.** Lightest possible; pad swap = unclip 4 hooks.
+
+*Off-the-shelf alt:* JPC-style carrier (Yakeda ~$30, IDOGEAR ~$55) —
+pads slide into its plate bags. Heavier, more durable, zero assembly.
 
 ## Firmware
 
