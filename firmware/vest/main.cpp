@@ -123,6 +123,7 @@ void die() {
 void registerHit() {
   hp--;
   lastHitMs = millis();
+  Serial.printf("HIT! hp=%d\n", hp);
   tone(BUZZER_PIN, 440, 150);
   flash(CRGB::White, 120);
   if (hp <= 0) {
