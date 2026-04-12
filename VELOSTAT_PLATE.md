@@ -160,25 +160,25 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 
 ## Wear layer
 
-**Straps clip directly to the pad** — no separate bag. Swivel snap hook
-in each corner grommet (spring-gate so it can't pop off mid-fight;
-swivel stops the strap twisting):
+**Straps clip directly to the pad** via side-release buckles. Each
+grommet gets a short webbing loop (~8 cm folded) with a **female**
+buckle half. Each strap has a **male** buckle on both ends + tri-glide
+for length. Click in; squeeze to release.
 
-- 2× shoulder straps: front-pad top grommets → over shoulders →
-  back-pad top grommets. Buckle + tri-glide on each.
-- 2× side straps: front-pad bottom grommets → around ribs → back-pad
-  bottom grommets. Buckle on each.
-- Pelican carabiners onto a side strap at the hip.
+- 2× shoulder straps: front-pad top → over shoulders → back-pad top
+- 2× side straps: front-pad bottom → around ribs → back-pad bottom
+- Don/doff: unclip the two side buckles, lift over head
+- Pad swap: squeeze 4 buckles
+- Pelican carabiners onto a side strap at the hip
 
 | Qty | Part | Link | Cost |
 |---|---|---|---|
-| 8 | swivel snap hook, 1" webbing / 3/8" eye | [amazon](https://www.amazon.com/s?k=swivel+snap+hook+1+inch+webbing) | $10 |
-| 4 | side-release buckle 1" | [amazon](https://www.amazon.com/s?k=1+inch+side+release+buckle) | $6 |
+| 8 | side-release buckle 1" | [amazon](https://www.amazon.com/s?k=1+inch+side+release+buckle+10+pack) | $10 |
 | 4 | tri-glide 1" | [amazon](https://www.amazon.com/s?k=1+inch+triglide+slider) | $4 |
-| 3 m | 25 mm nylon webbing (10 yd roll does ~3 vests) | [amazon](https://www.amazon.com/s?k=1+inch+nylon+webbing+10+yard) | $8 |
+| 4 m | 25 mm nylon webbing (10 yd roll does ~3 vests) | [amazon](https://www.amazon.com/s?k=1+inch+nylon+webbing+10+yard) | $8 |
 
-**~$26.** No sewing — webbing threads through tri-glides/buckles; melt
-cut ends with a lighter to stop fraying. Lightest possible; pad swap = unclip 4 hooks.
+**~$22.** No sewing — webbing threads through buckles/tri-glides; melt
+cut ends with a lighter. Lightest possible; pad swap = unclip 4 hooks.
 
 *Off-the-shelf alt:* JPC-style carrier (Yakeda ~$30, IDOGEAR ~$55) —
 pads slide into its plate bags. Heavier, more durable, zero assembly.
