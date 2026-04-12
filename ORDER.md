@@ -16,6 +16,7 @@ your earlier orders; check the pile before re-buying.
 | 5 | Neutral-cure RTV silicone | [amazon](https://www.amazon.com/s?k=neutral+cure+RTV+silicone+electronics) | $7 |
 | 6 | E6000 adhesive | [amazon](https://www.amazon.com/s?k=E6000+adhesive) | $6 |
 | 7 | 3/8" grommet kit + setter | [amazon](https://www.amazon.com/s?k=grommet+kit+3%2F8+inch) | $10 |
+| 7b | 20mm metal D-rings 20pk (grommet→1" webbing adapter) | [amazon](https://www.amazon.com/s?k=20mm+metal+D+ring+pack) | $6 |
 | 8 | 22AWG stranded silicone wire kit | [amazon](https://www.amazon.com/s?k=22+awg+stranded+silicone+wire+kit) | $10 |
 
 ### Hip box
