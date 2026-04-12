@@ -41,7 +41,7 @@ your earlier orders; check the pile before re-buying.
 ### Tools (one-time)
 | # | Part | Link | Cost |
 |---|---|---|---|
-| 22 | 12" impulse sealer *(or use iron)* | [amazon](https://www.amazon.com/s?k=impulse+heat+sealer+12+inch) | $25 |
+| 22 | **16"** impulse sealer *(or use iron)* | [amazon](https://www.amazon.com/s?k=impulse+heat+sealer+16+inch) | $35 |
 | 23 | Step drill bit set 3–12mm | [amazon](https://www.amazon.com/s?k=step+drill+bit+set) | $12 |
 | 24 | Cordless drill *(if none)* | [amazon](https://www.amazon.com/s?k=cordless+drill+20v) | $40 |
 | 25 | 8mm hollow hole punch | [amazon](https://www.amazon.com/s?k=8mm+hollow+hole+punch) | $6 |
