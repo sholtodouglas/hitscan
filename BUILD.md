@@ -64,8 +64,9 @@ somewhere; re-stack.
    rotate in the hole.
 3. Run a thin **RTV bead** around the flange edge on the outside.
    **[SEAL]** — secondary; let it skin over before handling (~15 min).
-4. Inside: solder snap-lead-A → socket pin 1, snap-lead-B → pin 2.
-   Heat-shrink each joint. **[MECH]** — tug each wire.
+4. Inside: socket has 3 pre-wired leads (brown/blue/black). Splice
+   snap-lead-A → **brown**, snap-lead-B → **blue** (solder + heat-
+   shrink). Snip black off. **[MECH]** — tug each splice.
 
 ### A5 — PUL pocket
 
