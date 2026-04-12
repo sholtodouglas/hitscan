@@ -153,6 +153,22 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 
 **≈ $95/vest** (sealer is one-time).
 
+## Wear layer
+
+**Off-the-shelf:** JPC-style plate carrier — front + back 10×12" plate
+bags, shoulder straps, skeletal cummerbund, MOLLE. Pad slides into each
+bag; cable exits the bottom grommet → along cummerbund → Pelican
+carabinered to the MOLLE at the hip.
+
+| | Price | Link |
+|---|---|---|
+| IDOGEAR JPC 2.0 | ~$55 | [amazon](https://www.amazon.com/s?k=IDOGEAR+JPC+2.0+plate+carrier) |
+| KRYDEX JPC | ~$45 | [amazon](https://www.amazon.com/s?k=KRYDEX+JPC+plate+carrier) |
+| Yakeda (budget) | ~$30 | [amazon](https://www.amazon.com/s?k=Yakeda+JPC+plate+carrier) |
+
+**DIY H-harness** (lighter, less military): 2× plate-bag pouches + 25 mm
+webbing over shoulders and around ribs, side-release buckles. ~$35–50.
+
 ## Firmware
 
 `./flash.sh vest-game`. Before production flash: `-DNUM_LEDS=16` for the
