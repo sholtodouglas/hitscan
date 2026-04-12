@@ -160,18 +160,19 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 
 ## Wear layer
 
-**Straps clip directly to the pad** — no separate bag. The four corner
-grommets (step 7) take G-hooks or small carabiners:
+**Straps clip directly to the pad** — no separate bag. Swivel snap hook
+in each corner grommet (spring-gate so it can't pop off mid-fight;
+swivel stops the strap twisting):
 
-- 2× shoulder straps: front-pad top loops → over shoulders → back-pad
-  top loops. Buckle + tri-glide on each.
-- 2× side straps: front-pad bottom loops → around ribs → back-pad
-  bottom loops. Buckle on each.
+- 2× shoulder straps: front-pad top grommets → over shoulders →
+  back-pad top grommets. Buckle + tri-glide on each.
+- 2× side straps: front-pad bottom grommets → around ribs → back-pad
+  bottom grommets. Buckle on each.
 - Pelican carabiners onto a side strap at the hip.
 
 | Qty | Part | Link | Cost |
 |---|---|---|---|
-| 8 | G-hook 1" | [amazon](https://www.amazon.com/s?k=1+inch+G+hook+webbing) | $8 |
+| 8 | swivel snap hook, 1" webbing / 3/8" eye | [amazon](https://www.amazon.com/s?k=swivel+snap+hook+1+inch+webbing) | $10 |
 | 4 | side-release buckle 1" | [amazon](https://www.amazon.com/s?k=1+inch+side+release+buckle) | $6 |
 | 4 | tri-glide 1" | [amazon](https://www.amazon.com/s?k=1+inch+triglide+slider) | $4 |
 | 3 m | 25 mm nylon webbing (10 yd roll does ~3 vests) | [amazon](https://www.amazon.com/s?k=1+inch+nylon+webbing+10+yard) | $8 |
