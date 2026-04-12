@@ -51,8 +51,12 @@ somewhere; re-stack.
 
 ### A4 — M8 socket in the tab
 
-1. From the **outside** (PETG-tab side that will face out), push the
-   M8 socket's threaded barrel through the 8 mm hole. The flange + its
+0. **E6000 the outer PUL sheet to the PETG tab** across the whole tab
+   area; clamp flat, cure overnight. PUL + tab become one piece — PUL
+   can't slip out from under the O-ring later. **[MECH]**
+1. Punch the bonded PUL to 8 mm right over the tab hole (so the barrel
+   passes *through* the PUL, not just under the flange). From the
+   **outside**, push the M8 socket's threaded barrel through PUL + tab. The flange + its
    **O-ring** sit flat on the outside face. **[SEAL]** — the O-ring is
    the primary seal; make sure it's seated in its groove, not pinched.
 2. From the inside, spin the **locknut** onto the threads. Tighten firm
