@@ -94,37 +94,42 @@ void renderHp() {
 }
 
 void flash(CRGB c, int ms) {
-  digitalWrite(ONBOARD_LED, HIGH);
   fill_solid(leds, NUM_LEDS, c);
   FastLED.show();
   delay(ms);
-  digitalWrite(ONBOARD_LED, LOW);
+}
+
+void beep(int ms) {
+  digitalWrite(BUZZER_PIN, HIGH);
+  delay(ms);
+  digitalWrite(BUZZER_PIN, LOW);
 }
 
 void resetGame() {
   hp = MAX_HP;
   lastHitMs = 0;
   armed = true;
-  tone(BUZZER_PIN, 880, 120);
+  beep(120);
   flash(CRGB::Blue, 200);
   renderHp();
 }
 
 void die() {
-  tone(BUZZER_PIN, 200, 1500);
   for (int i = 0; i < 6; i++) {
-    flash(CRGB::Red, 150);
+    digitalWrite(ONBOARD_LED, HIGH);
+    beep(150);
+    flash(CRGB::Red, 50);
+    digitalWrite(ONBOARD_LED, LOW);
     flash(CRGB::Black, 150);
   }
-  fill_solid(leds, NUM_LEDS, CRGB::Red);
-  FastLED.show();
+  resetGame();
 }
 
 void registerHit() {
   hp--;
   lastHitMs = millis();
   Serial.printf("HIT! hp=%d\n", hp);
-  tone(BUZZER_PIN, 440, 150);
+  beep(150);
   flash(CRGB::White, 120);
   if (hp <= 0) {
     hp = 0;
@@ -189,6 +194,7 @@ void setup() {
   analogReadResolution(12);
   pinMode(RESET_PIN, INPUT_PULLUP);
   pinMode(ONBOARD_LED, OUTPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
 #if SENSOR_MODE == MODE_BUTTON
   pinMode(SENSOR_PIN, INPUT_PULLUP);
 #elif SENSOR_MODE == MODE_NFC
@@ -228,10 +234,7 @@ void loop() {
     return;
   }
 
-  if (hp <= 0) {
-    // dead: hold red, wait for reset
-    return;
-  }
+  digitalWrite(ONBOARD_LED, (millis() - lastHitMs < (uint32_t)debounceMs) ? HIGH : LOW);
 
   bool t = triggered();
   if (!t) armed = true;
