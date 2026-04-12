@@ -14,8 +14,8 @@ harness). **(have)** = already in your inventory from the bench order.
 | — | 2 mm foam | — | — | (have) |
 | — | metal snap studs | — | — | (have) |
 | — | ring terminals + stranded wire | — | — | (have) |
-| 2 | PG7 cable gland, nylon | [amazon](https://www.amazon.com/s?k=PG7+cable+gland+nylon+5+pack) | $6 | |
-| 2 | M8 2-pin pre-molded cable, 0.5 m PUR | [amazon](https://www.amazon.com/s?k=M8+2+pin+male+cable+PUR) | $14 | |
+| 2 | **M8 2-pin female panel socket** (pad side, through PETG tab) | [amazon](https://www.amazon.com/s?k=M8+2+pin+female+panel+mount+IP67) | $8 | |
+| 2 | **M8 2-pin male-to-male cable**, 1 m PUR | [amazon](https://www.amazon.com/s?k=M8+2+pin+male+to+male+cable+1m) | $16 | |
 | 1 | neutral-cure RTV silicone | [amazon](https://www.amazon.com/s?k=neutral+cure+RTV+silicone+electronics) | $7 | |
 | 1 | E6000 adhesive | [amazon](https://www.amazon.com/s?k=E6000+adhesive) | $6 | |
 | 1 | 3/8" grommet kit + setter | [amazon](https://www.amazon.com/s?k=grommet+kit+3%2F8+inch) | $10 | |
@@ -27,7 +27,7 @@ harness). **(have)** = already in your inventory from the bench order.
 | Qty | Part | Link | Cost | |
 |---|---|---|---|---|
 | 1 | **Pelican 1010 Micro** (clear, or 1020 for room) | [amazon](https://www.amazon.com/dp/B000VZORPI) | $15 | |
-| 2 | M8 2-pin panel socket, IP67 | [amazon](https://www.amazon.com/s?k=M8+2+pin+female+panel+mount+IP67) | $8 | |
+| 2 | M8 2-pin female panel socket (box side — same part as pad) | [amazon](https://www.amazon.com/s?k=M8+2+pin+female+panel+mount+IP67) | $8 | |
 | 1 | WS2812B 16-LED ring, pre-wired | [amazon](https://www.amazon.com/s?k=WS2812B+16+LED+ring+neopixel) | $8 | |
 | 1 | perfboard variety pack | [amazon](https://www.amazon.com/s?k=perfboard+prototype+board+pack) | $8 | |
 | 1 | 2.54 mm female header strip (cut to 2×15) | [amazon](https://www.amazon.com/s?k=2.54mm+female+header+strip+40+pin) | $6 | |
@@ -82,7 +82,7 @@ M8/buckles/webbing. PCB run replaces perfboard at ~$1/board for 30.)
 | **PUL heat-weld pocket** | sewn, laminator, food-bag | fused seam = no needle holes, soft, immersion-grade. Laminator risks warping Velostat; food-bag is the fast prototype |
 | **PETG strike plate** | bare stack | keeps face flat when pad curves to torso; spreads point hits |
 | **Snap-fastener electrode leads** | solder-to-fabric | mechanical clamp on the weave — solder joints to copper fabric crack |
-| **Gland through PETG tab** | M8-in-pad, RTV blob | gland clamps rigid (the tab); M8 lives downstream so the connector never touches the seal. RTV-blob is the fine-for-rain shortcut |
+| **M8 socket through PETG tab** | gland+pigtail, RTV blob | socket mounts same as gland (flange/nut on rigid tab) but the cable is now a **separate swappable part** — most-exposed component, most likely to get damaged |
 | **Grommets in welded margin** | loops-in-weld, separate bag | margin is solid fused PUL → hole has no leak path. Mechanically certain regardless of weld skill |
 | **Pelican 1010 clear lid** | junction box + window | latch = reset/charge access without holes; clear lid = ring visible. **2 holes total** (M8×2) |
 | **Ring dark-until-hit** | always-on HP bar | ~45 h battery vs ~18 h; bonus mechanic — opponents only see your HP when they land one |

@@ -48,9 +48,10 @@ cracks). Snaps stay **inside** the pocket; nothing pierces the PUL.
 4. Heat-weld a **gland plate** (25×25 mm PETG, 7 mm hole) to the inside
    of one PUL sheet at that edge — iron on low through parchment, or
    E6000 glue. This gives the gland a rigid surface to clamp.
-5. Fit a **PG7 cable gland** through the plate + PUL (or skip the gland:
-   small hole, adhesive heat-shrink on the cable, fat RTV blob both
-   sides — fine for rain, simpler; dunk-test it). Feed both lead
+5. Fit an **M8 2-pin panel socket** through the plate + PUL: 8 mm hole,
+   socket's threaded barrel through, locknut on the inside clamps the
+   tab. Socket's O-ring seals against the outside face; RTV bead for
+   paranoia. Solder snap-lead-A → pin 1, snap-lead-B → pin 2 inside. Feed both lead
    wires + a 20 cm 2-core pigtail through; solder leads to pigtail
    inside the pocket; tighten the gland's compression nut on the
    pigtail. RTV bead around the plate-to-PUL edge.
@@ -61,15 +62,17 @@ cracks). Snaps stay **inside** the pocket; nothing pierces the PUL.
 7. **Punch a grommet** through each corner of the welded margin (3/8"
    eyelet). The margin is solid fused PUL — no cavity — so the hole has
    no leak path into the pocket. Straps clip here.
-8. Crimp/solder an **M8 2-pin plug** onto the pigtail end.
+8. Pad now has a flush M8 socket. A **male-to-male M8 cable** (plug
+   both ends, 1 m) connects pad ↔ Pelican. Cable is the wear part —
+   damaged cable = unscrew both ends, swap, done.
 
-### Why gland-plus-pigtail, not M8-in-pad
+### Why M8 socket through the rigid tab
 
-A panel-mount M8 through flexible PUL relies on an RTV bead that flexes
-every hit — it'll crack eventually. The gland is purpose-built: rubber
-compression seal grips the round cable, threaded body clamps a rigid
-plate. The M8 connector lives 20 cm downstream where it can't affect the
-pad seal. Dead pad = unscrew M8, swap pad, harness untouched.
+The PETG tab gives the socket a rigid wall to clamp (flange + nut),
+same as the Pelican side. The earlier worry about M8-through-PUL was
+the *flexible* PUL — the tab fixes that. Cable is now fully swappable
+at both ends: damaged cable, dead pad, or dead box are all independent
+unscrew-and-replace.
 
 ### Dunk test
 
@@ -142,10 +145,9 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 | 1 yd | PUL fabric | [amazon](https://www.amazon.com/s?k=PUL+fabric+waterproof+yard) | $10 |
 | 0.5 m | copper fabric | (have) | — |
 | — | metal snap studs, ring terminals, stranded wire | (have) | — |
-| 2 | PG7 cable gland | [amazon](https://www.amazon.com/s?k=PG7+cable+gland+nylon) | $4 |
+| 2 | M8 2-pin female panel socket (pad) | [amazon](https://www.amazon.com/s?k=M8+2+pin+female+panel+mount+IP67) | $8 |
 | 1 | PETG sheet scrap (gland plates) | (have) | — |
-| 2 | M8 2-pin plug + socket pair, IP67 | [amazon](https://www.amazon.com/s?k=M8+2+pin+connector+IP67) | $10 |
-| 1 m | 2-core cable 24AWG | [amazon](https://www.amazon.com/s?k=2+core+cable+24awg) | $5 |
+| 2 | M8 2-pin male-to-male cable, 1 m | [amazon](https://www.amazon.com/s?k=M8+2+pin+male+to+male+cable+1m) | $16 |
 | 1 | neutral-cure RTV silicone | [amazon](https://www.amazon.com/s?k=neutral+cure+RTV+silicone+electronics) | $7 |
 | 1 | E6000 / fabric glue | [amazon](https://www.amazon.com/s?k=E6000+adhesive) | $6 |
 | 1 | 3/8" grommet kit + setter | [amazon](https://www.amazon.com/s?k=grommet+kit+3%2F8+inch) | $10 |
