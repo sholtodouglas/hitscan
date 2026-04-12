@@ -54,12 +54,13 @@ cracks). Snaps stay **inside** the pocket; nothing pierces the PUL.
    wires + a 20 cm 2-core pigtail through; solder leads to pigtail
    inside the pocket; tighten the gland's compression nut on the
    pigtail. RTV bead around the plate-to-PUL edge.
-6. Cut four **15 cm loops of 25 mm webbing**, fold each in half. Lay the
-   second PUL sheet over. At each corner, trap a folded loop between the
-   two PUL layers so ~4 cm of loop sticks out past the edge.
-7. **Heat-weld all four edges** (impulse sealer, or iron on low through
-   parchment, PU sides together) — the weld fuses through/around the
-   webbing, sealing it in. Leave the pocket *slightly* loose.
+6. Lay the second PUL sheet over. **Heat-weld all four edges** (impulse
+   sealer, or iron on low through parchment, PU sides together), leaving
+   a **~20 mm fused margin** past the sensor stack on every side. Keep
+   the pocket *slightly* loose — pre-compression kills dynamic range.
+7. **Punch a grommet** through each corner of the welded margin (3/8"
+   eyelet). The margin is solid fused PUL — no cavity — so the hole has
+   no leak path into the pocket. Straps clip here.
 8. Crimp/solder an **M8 2-pin plug** onto the pigtail end.
 
 ### Why gland-plus-pigtail, not M8-in-pad
@@ -147,6 +148,7 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 | 1 m | 2-core cable 24AWG | [amazon](https://www.amazon.com/s?k=2+core+cable+24awg) | $5 |
 | 1 | neutral-cure RTV silicone | [amazon](https://www.amazon.com/s?k=neutral+cure+RTV+silicone+electronics) | $7 |
 | 1 | E6000 / fabric glue | [amazon](https://www.amazon.com/s?k=E6000+adhesive) | $6 |
+| 1 | 3/8" grommet kit + setter | [amazon](https://www.amazon.com/s?k=grommet+kit+3%2F8+inch) | $10 |
 | 1 | **Pelican 1010 Micro** (or 1020) | [amazon](https://www.amazon.com/dp/B000VZORPI) | $15 |
 | 1 | WS2812B 16-LED ring, pre-wired | [amazon](https://www.amazon.com/s?k=WS2812B+16+LED+ring+neopixel) | $8 |
 | 2 | M8 2-pin panel socket (box side) | [amazon](https://www.amazon.com/s?k=M8+2+pin+female+panel+mount+IP67) | $8 |
@@ -158,8 +160,8 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 
 ## Wear layer
 
-**Straps clip directly to the pad** — no separate bag. The four webbing
-loops welded into the pad corners (step 6) take G-hooks or carabiners:
+**Straps clip directly to the pad** — no separate bag. The four corner
+grommets (step 7) take G-hooks or small carabiners:
 
 - 2× shoulder straps: front-pad top loops → over shoulders → back-pad
   top loops. Buckle + tri-glide on each.
