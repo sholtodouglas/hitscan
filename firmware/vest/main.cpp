@@ -125,10 +125,10 @@ void die() {
   resetGame();
 }
 
-void registerHit() {
+void registerHit(int val) {
   hp--;
   lastHitMs = millis();
-  Serial.printf("HIT! hp=%d\n", hp);
+  Serial.printf("HIT! val=%d hp=%d\n", val, hp);
   beep(150);
   flash(CRGB::White, 120);
   if (hp <= 0) {
@@ -168,10 +168,6 @@ int rawSensor() {
 #else
   return analogRead(SENSOR_PIN);
 #endif
-}
-
-bool triggered() {
-  return rawSensor() > hitThreshold;
 }
 
 #if CALIBRATION
@@ -236,10 +232,10 @@ void loop() {
 
   digitalWrite(ONBOARD_LED, (millis() - lastHitMs < (uint32_t)debounceMs) ? HIGH : LOW);
 
-  bool t = triggered();
-  if (!t) armed = true;
-  if (armed && t && millis() - lastHitMs > (uint32_t)debounceMs) {
+  int v = rawSensor();
+  if (v <= hitThreshold) armed = true;
+  if (armed && v > hitThreshold && millis() - lastHitMs > (uint32_t)debounceMs) {
     armed = false;
-    registerHit();
+    registerHit(v);
   }
 }
