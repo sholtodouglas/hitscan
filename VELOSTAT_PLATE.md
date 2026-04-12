@@ -75,25 +75,21 @@ check inside for damp. Re-weld. Do this once per design rev, not per pad.
 
 ## Hip box
 
-**Enclosure:** IP67 junction box with **clear polycarbonate lid**,
-~130×80×50 mm internal, gasketed screw-down. Ring LED is visible
-straight through the lid — **no window hole to cut**.
-[amazon](https://www.amazon.com/s?k=IP67+junction+box+clear+lid+130x80).
+**Enclosure:** **Pelican 1010 Micro** (or 1020 for more room) — IP67,
+clear lid, tool-free latch, carabiner loop.
+[amazon](https://www.amazon.com/dp/B000VZORPI). Interior ~111×73×43 mm.
 
-**Lid (display side, faces outward):**
-- 16-LED WS2812 ring hot-glued to the **inside** of the clear lid.
-  Ring is dark until a hit lands → shows HP arc for the 1 s cooldown →
-  fades black (≈45 h battery vs ≈18 h always-on).
-- 12 mm hole → **waterproof momentary button** (pre-gasketed,
-  [amazon](https://www.amazon.com/s?k=12mm+waterproof+momentary+button+IP67))
-  = reset/respawn. Only hole in the lid.
+**Only two holes, both in one short side:**
+- 2× **M8 2-pin panel sockets** (chest pad, back pad). Drill 8 mm,
+  fitting's O-ring seals against the outside, nut on the inside.
 
-**One short side (the cable side):**
-- 2× **M8 2-pin panel sockets** (chest pad, back pad) — these come
-  IP67-gasketed, drill 8 mm, nut on inside
-- 1× **panel-mount USB-C passthrough** ([amazon](https://www.amazon.com/s?k=USB-C+panel+mount+waterproof+IP67))
-  → short cable inside to the power bank's charge port. Or skip this
-  and just unscrew the lid to charge.
+**Everything else is inside — pop the latch to access:**
+- 16-LED WS2812 ring hot-glued to the inside of the clear lid. Dark
+  until a hit lands → shows HP arc for the cooldown → black. ≈45 h
+  battery.
+- Reset button on the perfboard (open lid, press).
+- Charging: open lid, plug power bank in.
+- Carabiner loop → belt clip. Done.
 
 **Inside:**
 ```
@@ -115,9 +111,7 @@ ESP32 on female header (socketed, swappable). Perfboard screwed to two
 standoffs. Power bank velcro'd to the floor. Short USB-A→C cable from
 bank to ESP32.
 
-**Mounting to body:** two slots in the box's mounting ears → 25 mm
-webbing strap (your running straps) → around waist. Or velcro the back
-of the box to a belt.
+**Mounting to body:** carabiner loop → belt or harness D-ring.
 
 ### Divider — with current limiter
 
@@ -150,10 +144,9 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 | 1 m | 2-core cable 24AWG | [amazon](https://www.amazon.com/s?k=2+core+cable+24awg) | $5 |
 | 1 | neutral-cure RTV silicone | [amazon](https://www.amazon.com/s?k=neutral+cure+RTV+silicone+electronics) | $7 |
 | 1 | E6000 / fabric glue | [amazon](https://www.amazon.com/s?k=E6000+adhesive) | $6 |
-| 1 | **IP67 box, clear lid** ~130×80×50 | [amazon](https://www.amazon.com/s?k=IP67+junction+box+clear+lid+130x80) | $12 |
+| 1 | **Pelican 1010 Micro** (or 1020) | [amazon](https://www.amazon.com/dp/B000VZORPI) | $15 |
 | 1 | WS2812B 16-LED ring, pre-wired | [amazon](https://www.amazon.com/s?k=WS2812B+16+LED+ring+neopixel) | $8 |
-| 1 | 12 mm waterproof momentary button | [amazon](https://www.amazon.com/s?k=12mm+waterproof+momentary+button+IP67) | $5 |
-| 1 | panel-mount USB-C, IP67 screw cap | [amazon](https://www.amazon.com/s?k=USB-C+panel+mount+waterproof+screw+cap) | $8 |
+| 2 | M8 2-pin panel socket (box side) | [amazon](https://www.amazon.com/s?k=M8+2+pin+female+panel+mount+IP67) | $8 |
 | 2 | M8 2-pin pre-molded sensor cable, 0.5 m PUR | [amazon](https://www.amazon.com/s?k=M8+2+pin+male+cable+PUR) | $14 |
 | — | 22Ω ½W + 1Ω ¼W resistors | (kit) | — |
 | *(tool)* | impulse sealer 12" — or use a clothes iron | [amazon](https://www.amazon.com/s?k=impulse+heat+sealer+12+inch) | $25 |
