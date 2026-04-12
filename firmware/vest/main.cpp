@@ -79,6 +79,7 @@ CRGB     leds[NUM_LEDS];
 int      hp;
 uint32_t lastHitMs;
 bool     armed;
+int      hitPeak;
 
 void renderHp() {
   int lit = map(hp, 0, MAX_HP, 0, NUM_LEDS);
@@ -230,12 +231,21 @@ void loop() {
     return;
   }
 
-  digitalWrite(ONBOARD_LED, (millis() - lastHitMs < (uint32_t)debounceMs) ? HIGH : LOW);
-
   int v = rawSensor();
+  bool cooling = millis() - lastHitMs < (uint32_t)debounceMs;
+  digitalWrite(ONBOARD_LED, cooling ? HIGH : LOW);
+
+  if (cooling) {
+    if (v > hitPeak) hitPeak = v;
+  } else if (hitPeak > 0) {
+    Serial.printf("  (peak %d)\n", hitPeak);
+    hitPeak = 0;
+  }
+
   if (v <= hitThreshold) armed = true;
-  if (armed && v > hitThreshold && millis() - lastHitMs > (uint32_t)debounceMs) {
+  if (armed && v > hitThreshold && !cooling) {
     armed = false;
+    hitPeak = v;
     registerHit(v);
   }
 }
