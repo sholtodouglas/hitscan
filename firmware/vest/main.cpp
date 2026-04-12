@@ -41,8 +41,11 @@ constexpr int   MAX_HP        = 5;
 #ifndef HIT_THRESHOLD
 #define HIT_THRESHOLD 800
 #endif
+#ifndef DEBOUNCE_MS
+#define DEBOUNCE_MS 300
+#endif
 constexpr int   hitThreshold  = HIT_THRESHOLD;   // 0..4095
-constexpr int   DEBOUNCE_MS   = 300;   // min gap between registered hits
+constexpr int   debounceMs    = DEBOUNCE_MS;
 constexpr int   NUM_LEDS      = 8;
 
 // ---------- pins ----------
@@ -50,6 +53,7 @@ constexpr int   SENSOR_PIN    = 32;
 constexpr int   LED_PIN       = 5;
 constexpr int   BUZZER_PIN    = 18;
 constexpr int   RESET_PIN     = 19;
+constexpr int   ONBOARD_LED   = 2;
 
 #if SENSOR_MODE == MODE_NFC || SENSOR_MODE == MODE_NFC_PN532
 #include <SPI.h>
@@ -90,9 +94,11 @@ void renderHp() {
 }
 
 void flash(CRGB c, int ms) {
+  digitalWrite(ONBOARD_LED, HIGH);
   fill_solid(leds, NUM_LEDS, c);
   FastLED.show();
   delay(ms);
+  digitalWrite(ONBOARD_LED, LOW);
 }
 
 void resetGame() {
@@ -181,6 +187,7 @@ void setup() {
   Serial.begin(115200);
   analogReadResolution(12);
   pinMode(RESET_PIN, INPUT_PULLUP);
+  pinMode(ONBOARD_LED, OUTPUT);
 #if SENSOR_MODE == MODE_BUTTON
   pinMode(SENSOR_PIN, INPUT_PULLUP);
 #elif SENSOR_MODE == MODE_NFC
@@ -227,7 +234,7 @@ void loop() {
 
   bool t = triggered();
   if (!t) armed = true;
-  if (armed && t && millis() - lastHitMs > DEBOUNCE_MS) {
+  if (armed && t && millis() - lastHitMs > (uint32_t)debounceMs) {
     armed = false;
     registerHit();
   }
