@@ -38,7 +38,10 @@
 
 // ---------- tuning ----------
 constexpr int   MAX_HP        = 5;
-constexpr int   HIT_THRESHOLD = 800;   // 0..4095; raise if false-positives from running/jostle
+#ifndef HIT_THRESHOLD
+#define HIT_THRESHOLD 800
+#endif
+constexpr int   hitThreshold  = HIT_THRESHOLD;   // 0..4095
 constexpr int   DEBOUNCE_MS   = 300;   // min gap between registered hits
 constexpr int   NUM_LEDS      = 8;
 
@@ -156,7 +159,7 @@ int rawSensor() {
 }
 
 bool triggered() {
-  return rawSensor() > HIT_THRESHOLD;
+  return rawSensor() > hitThreshold;
 }
 
 #if CALIBRATION
