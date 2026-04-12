@@ -75,14 +75,18 @@ check inside for damp. Re-weld. Do this once per design rev, not per pad.
 
 ## Hip box
 
-**Enclosure:** IP67 junction box, ~130×80×50 mm internal, **gasketed
-screw-down lid** (not snap-clips). [amazon](https://www.amazon.com/s?k=IP67+junction+box+gasket+130x80).
+**Enclosure:** IP67 junction box with **clear polycarbonate lid**,
+~130×80×50 mm internal, gasketed screw-down. Ring LED is visible
+straight through the lid — **no window hole to cut**.
+[amazon](https://www.amazon.com/s?k=IP67+junction+box+clear+lid+130x80).
 
-**Lid (the display side, faces outward):**
-- 40 mm hole, clear acrylic disc bedded in RTV → **16-LED WS2812 ring**
-  glued to the inside of the disc, wires down into the box
-- 6 mm hole → **waterproof momentary button** (pre-gasketed, [amazon](https://www.amazon.com/s?k=12mm+waterproof+momentary+button+IP67))
-  = reset/respawn
+**Lid (display side, faces outward):**
+- 16-LED WS2812 ring hot-glued to the **inside** of the clear lid.
+  Ring is dark until a hit lands → shows HP arc for the 1 s cooldown →
+  fades black (≈45 h battery vs ≈18 h always-on).
+- 12 mm hole → **waterproof momentary button** (pre-gasketed,
+  [amazon](https://www.amazon.com/s?k=12mm+waterproof+momentary+button+IP67))
+  = reset/respawn. Only hole in the lid.
 
 **One short side (the cable side):**
 - 2× **M8 2-pin panel sockets** (chest pad, back pad) — these come
@@ -146,9 +150,11 @@ Zone-aware variant: separate divider per pad → P32 / P33.
 | 1 m | 2-core cable 24AWG | [amazon](https://www.amazon.com/s?k=2+core+cable+24awg) | $5 |
 | 1 | neutral-cure RTV silicone | [amazon](https://www.amazon.com/s?k=neutral+cure+RTV+silicone+electronics) | $7 |
 | 1 | E6000 / fabric glue | [amazon](https://www.amazon.com/s?k=E6000+adhesive) | $6 |
-| 1 | IP65 junction box ~130×80×50 + glands | [amazon](https://www.amazon.com/s?k=IP65+junction+box+130x80+cable+gland) | $10 |
+| 1 | **IP67 box, clear lid** ~130×80×50 | [amazon](https://www.amazon.com/s?k=IP67+junction+box+clear+lid+130x80) | $12 |
 | 1 | WS2812B 16-LED ring, pre-wired | [amazon](https://www.amazon.com/s?k=WS2812B+16+LED+ring+neopixel) | $8 |
-| 1 | 40 mm clear acrylic disc (lid window) | [amazon](https://www.amazon.com/s?k=40mm+clear+acrylic+disc) | $5 |
+| 1 | 12 mm waterproof momentary button | [amazon](https://www.amazon.com/s?k=12mm+waterproof+momentary+button+IP67) | $5 |
+| 1 | panel-mount USB-C, IP67 screw cap | [amazon](https://www.amazon.com/s?k=USB-C+panel+mount+waterproof+screw+cap) | $8 |
+| 2 | M8 2-pin pre-molded sensor cable, 0.5 m PUR | [amazon](https://www.amazon.com/s?k=M8+2+pin+male+cable+PUR) | $14 |
 | — | 22Ω ½W + 1Ω ¼W resistors | (kit) | — |
 | *(tool)* | impulse sealer 12" — or use a clothes iron | [amazon](https://www.amazon.com/s?k=impulse+heat+sealer+12+inch) | $25 |
 

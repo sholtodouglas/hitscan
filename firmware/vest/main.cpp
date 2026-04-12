@@ -115,7 +115,7 @@ void resetGame() {
   armed = false;
   beep(120);
   flash(CRGB::Blue, 200);
-  renderHp();
+  FastLED.clear(true);
 }
 
 void die() {
@@ -243,6 +243,7 @@ void loop() {
   } else if (hitPeak > 0) {
     Serial.printf("  (peak %d)\n", hitPeak);
     hitPeak = 0;
+    FastLED.clear(true);
   }
 
   if (v <= hitThreshold) armed = true;
