@@ -75,9 +75,45 @@ check inside for damp. Re-weld. Do this once per design rev, not per pad.
 
 ## Hip box
 
-IP65 junction box ~130×80×50 mm with cable glands. Contains ESP32, power
-bank, buzzer, divider network. **WS2812B 16-LED ring** behind a 40 mm
-clear acrylic window in the lid.
+**Enclosure:** IP67 junction box, ~130×80×50 mm internal, **gasketed
+screw-down lid** (not snap-clips). [amazon](https://www.amazon.com/s?k=IP67+junction+box+gasket+130x80).
+
+**Lid (the display side, faces outward):**
+- 40 mm hole, clear acrylic disc bedded in RTV → **16-LED WS2812 ring**
+  glued to the inside of the disc, wires down into the box
+- 6 mm hole → **waterproof momentary button** (pre-gasketed, [amazon](https://www.amazon.com/s?k=12mm+waterproof+momentary+button+IP67))
+  = reset/respawn
+
+**One short side (the cable side):**
+- 2× **M8 2-pin panel sockets** (chest pad, back pad) — these come
+  IP67-gasketed, drill 8 mm, nut on inside
+- 1× **panel-mount USB-C passthrough** ([amazon](https://www.amazon.com/s?k=USB-C+panel+mount+waterproof+IP67))
+  → short cable inside to the power bank's charge port. Or skip this
+  and just unscrew the lid to charge.
+
+**Inside:**
+```
+┌──────────────────────────────────────┐
+│ ┌──────────┐  ┌──────────────────┐  │
+│ │ power    │  │ perfboard:       │  │
+│ │ bank     │  │  ESP32 (socketed)│  │
+│ │ 5000mAh  │  │  22Ω + 1Ω divider│  │
+│ │          │  │  buzzer          │  │
+│ └────┬─────┘  └────┬─────────────┘  │
+│      └─USB────────►│                 │
+│                                      │
+│  M8-chest  M8-back  USB-C-charge    │ ← short side
+└──────────────────────────────────────┘
+        lid: ring LED + reset btn
+```
+
+ESP32 on female header (socketed, swappable). Perfboard screwed to two
+standoffs. Power bank velcro'd to the floor. Short USB-A→C cable from
+bank to ESP32.
+
+**Mounting to body:** two slots in the box's mounting ears → 25 mm
+webbing strap (your running straps) → around waist. Or velcro the back
+of the box to a belt.
 
 ### Divider — with current limiter
 
