@@ -107,8 +107,8 @@ void beep(int ms) {
 
 void resetGame() {
   hp = MAX_HP;
-  lastHitMs = 0;
-  armed = true;
+  lastHitMs = millis();
+  armed = false;
   beep(120);
   flash(CRGB::Blue, 200);
   renderHp();
