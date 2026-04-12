@@ -46,7 +46,10 @@ constexpr int   MAX_HP        = 5;
 #endif
 constexpr int   hitThreshold  = HIT_THRESHOLD;   // 0..4095
 constexpr int   debounceMs    = DEBOUNCE_MS;
-constexpr int   NUM_LEDS      = 8;
+#ifndef NUM_LEDS
+#define NUM_LEDS 8
+#endif
+constexpr int   numLeds       = NUM_LEDS;
 
 // ---------- pins ----------
 constexpr int   SENSOR_PIN    = 32;
@@ -75,17 +78,17 @@ Adafruit_PN532* nfc[NUM_READERS];
 #endif
 
 // ---------- state ----------
-CRGB     leds[NUM_LEDS];
+CRGB     leds[numLeds];
 int      hp;
 uint32_t lastHitMs;
 bool     armed;
 int      hitPeak;
 
 void renderHp() {
-  int lit = map(hp, 0, MAX_HP, 0, NUM_LEDS);
-  for (int i = 0; i < NUM_LEDS; i++) {
+  int lit = map(hp, 0, MAX_HP, 0, numLeds);
+  for (int i = 0; i < numLeds; i++) {
     if (i < lit) {
-      uint8_t hue = map(i, 0, NUM_LEDS - 1, 0, 96);   // red -> green
+      uint8_t hue = map(i, 0, numLeds - 1, 0, 96);   // red -> green
       leds[i] = CHSV(hue, 255, 255);
     } else {
       leds[i] = CRGB::Black;
@@ -95,7 +98,7 @@ void renderHp() {
 }
 
 void flash(CRGB c, int ms) {
-  fill_solid(leds, NUM_LEDS, c);
+  fill_solid(leds, numLeds, c);
   FastLED.show();
   delay(ms);
 }
@@ -214,7 +217,7 @@ void setup() {
     if (ver) nfc[r]->SAMConfig();
   }
 #endif
-  FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
+  FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, numLeds);
   FastLED.setBrightness(180);
   resetGame();
 }
