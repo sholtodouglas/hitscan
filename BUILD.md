@@ -201,11 +201,13 @@ mated) for 5 min. **[SEAL]** — open, check dry inside.
 
 ## D. Harness
 
-### D1 — Grommet loops (×8, one per pad corner)
+### D1 — Grommet → buckle (×8, one per pad corner)
 
-8 cm of webbing, fold in half through a grommet, both tails into the
-**female** half of a side-release buckle. Melt the cut ends.
-**[MECH]** — yank the buckle; webbing shouldn't slip.
+1. Thread a **20 mm D-ring** through the grommet.
+2. 10 cm of webbing: fold in half through the D-ring, both tails into
+   the **female** half of a side-release buckle. Melt cut ends.
+**[MECH]** — yank the buckle; webbing shouldn't slip through buckle or
+D-ring.
 
 ### D2 — Straps (×4: 2 shoulder, 2 side)
 
