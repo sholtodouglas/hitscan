@@ -10,8 +10,9 @@ your earlier orders; check the pile before re-buying.
 |---|---|---|---|
 | 1 | Velostat 11×11" | [adafruit](https://www.adafruit.com/product/1361) | $5 |
 | 2 | PUL fabric 1yd | [amazon](https://www.amazon.com/s?k=PUL+fabric+waterproof+yard) | $10 |
-| 3 | M8 2-pin female panel socket IP67 ×4 | [amazon](https://www.amazon.com/s?k=M8+2+pin+female+panel+mount+IP67) | $16 |
-| 4 | M8 2-pin male-to-male cable 1m ×2 | [amazon](https://www.amazon.com/s?k=M8+2+pin+male+to+male+cable+1m) | $16 |
+| 3 | M8 **3-pin male** panel mount, pre-wired ×2 (pads) | [B0BFBD94BN](https://www.amazon.com/dp/B0BFBD94BN) | $14 |
+| 4 | M8 **3-pin female** panel mount, pre-wired ×2 (box) | [B0BVQXKFQC](https://www.amazon.com/dp/B0BVQXKFQC) | $14 |
+| 5 | M8 3-pin **M-to-F** cordset 1m IP67 ×2 | [B0CXHQBLD3](https://www.amazon.com/dp/B0CXHQBLD3) | $18 |
 | 5 | Neutral-cure RTV silicone | [amazon](https://www.amazon.com/s?k=neutral+cure+RTV+silicone+electronics) | $7 |
 | 6 | E6000 adhesive | [amazon](https://www.amazon.com/s?k=E6000+adhesive) | $6 |
 | 7 | 3/8" grommet kit + setter | [amazon](https://www.amazon.com/s?k=grommet+kit+3%2F8+inch) | $10 |
