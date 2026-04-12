@@ -172,9 +172,10 @@ loops welded into the pad corners (step 6) take G-hooks or carabiners:
 | 8 | G-hook 1" | [amazon](https://www.amazon.com/s?k=1+inch+G+hook+webbing) | $8 |
 | 4 | side-release buckle 1" | [amazon](https://www.amazon.com/s?k=1+inch+side+release+buckle) | $6 |
 | 4 | tri-glide 1" | [amazon](https://www.amazon.com/s?k=1+inch+triglide+slider) | $4 |
-| ~3 m | 25 mm webbing | (running straps) | — |
+| 3 m | 25 mm nylon webbing (10 yd roll does ~3 vests) | [amazon](https://www.amazon.com/s?k=1+inch+nylon+webbing+10+yard) | $8 |
 
-**~$18 + webbing.** Lightest possible; pad swap = unclip 4 hooks.
+**~$26.** No sewing — webbing threads through tri-glides/buckles; melt
+cut ends with a lighter to stop fraying. Lightest possible; pad swap = unclip 4 hooks.
 
 *Off-the-shelf alt:* JPC-style carrier (Yakeda ~$30, IDOGEAR ~$55) —
 pads slide into its plate bags. Heavier, more durable, zero assembly.
