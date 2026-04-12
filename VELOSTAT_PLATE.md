@@ -5,15 +5,22 @@ divider). Force-gated, jog-proof, rain-proof. ~$95/vest.
 
 ## Pad construction
 
-### Stack
+### Stack (outside → body)
 
 ```
   PUL outer skin  ──────────────────────────────  strike face
-    copper fabric A   (snap → lead 1, LEFT corner)
-    Velostat          (overlaps both coppers ≥5mm every side)
-    copper fabric B   (snap → lead 2, RIGHT corner)
+    0.5 mm PETG sheet   ← strike plate: keeps form, spreads point hits
+    copper fabric A     (snap → lead 1, LEFT corner)
+    Velostat            (overlaps both coppers ≥5mm every side)
+    copper fabric B     (snap → lead 2, RIGHT corner)
+    2 mm foam           ← optional, body comfort only
   PUL inner skin  ──────────────────────────────  body side
 ```
+
+The PETG keeps the face flat (no wrinkles when the pad curves to a torso)
+and spreads an off-center hit across more Velostat. Cut it same size as
+copper A, round corners, two glue dots to copper A. Foam is comfort, not
+function — never put foam *between* copper and Velostat.
 
 Copper A and B are **offset** so each snap corner sits over Velostat
 only, never over the other copper — no short path through a snap.
@@ -41,7 +48,9 @@ cracks). Snaps stay **inside** the pocket; nothing pierces the PUL.
 4. Heat-weld a **gland plate** (25×25 mm PETG, 7 mm hole) to the inside
    of one PUL sheet at that edge — iron on low through parchment, or
    E6000 glue. This gives the gland a rigid surface to clamp.
-5. Fit a **PG7 cable gland** through the plate + PUL. Feed both lead
+5. Fit a **PG7 cable gland** through the plate + PUL (or skip the gland:
+   small hole, adhesive heat-shrink on the cable, fat RTV blob both
+   sides — fine for rain, simpler; dunk-test it). Feed both lead
    wires + a 20 cm 2-core pigtail through; solder leads to pigtail
    inside the pocket; tighten the gland's compression nut on the
    pigtail. RTV bead around the plate-to-PUL edge.
